@@ -175,3 +175,10 @@ body,
 	text-align: center;
 	font-size: 0.8em;
 }
+
+/* book container */
+.book-container {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
