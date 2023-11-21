@@ -4,21 +4,33 @@ import { useState } from "react";
 function App() {
 	const [showSearchPage, setShowSearchpage] = useState(false);
 
+	const [query, setQuery] = useState("");
+
+	const updateQuery = (query) => {
+		setQuery(query.trim());
+	};
+
+	const clearQuery = () => {
+		setQuery("");
+	};
+
 	return (
 		<div className="app">
 			{showSearchPage ? (
 				<div className="search-books">
 					<div className="search-books-bar">
-						<a
+						<button
 							className="close-search"
 							onClick={() => setShowSearchpage(!showSearchPage)}
 						>
 							Close
-						</a>
+						</button>
 						<div className="search-books-input-wrapper">
 							<input
 								type="text"
 								placeholder="Search by title, author, or ISBN"
+								value={query}
+								onChange={(event) => updateQuery(event.target.value)}
 							/>
 						</div>
 					</div>
@@ -273,7 +285,9 @@ function App() {
 						</div>
 					</div>
 					<div className="open-search">
-						<a onClick={() => setShowSearchpage(!showSearchPage)}>Add a book</a>
+						<a href="#" onClick={() => setShowSearchpage(!showSearchPage)}>
+							Add a book
+						</a>
 					</div>
 				</div>
 			)}
